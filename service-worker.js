@@ -1,4 +1,4 @@
-const CACHE_NAME = 'srb-v2';
+const CACHE_NAME = 'srb-v3';
 const ASSETS = [
   './',
   './index.html',
