@@ -3,45 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Carteira Rio Branco</title>
-    
+    <title>SRB Mobile</title>
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="logo.png">
-    
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-        img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <img src="carteira.png" alt="Carteira de Sócio">
+    <div id="screen-dashboard" class="screen">
+        <header class="main-header">
+            <i class="fas fa-bars"></i>
+            <div class="header-status">
+                <span>Situação Financeira do Titular:</span>
+                <strong class="status-alert">Com Pendência(s) <i class="fas fa-sync-alt"></i></strong>
+            </div>
+            <img src="perfil.jpg" class="profile-img" alt="Perfil">
+        </header>
+
+        <main>
+            <div class="announcement-slider">
+                <img src="comunicado.png" alt="Comunicado SRB">
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+
+            <div class="menu-grid">
+                <button class="menu-item" onclick="showScreen('screen-card')">
+                    <i class="fas fa-address-card icon-red"></i>
+                    <span>Minha Carteira</span>
+                </button>
+                <button class="menu-item">
+                    <i class="fas fa-user icon-red"></i>
+                    <span>Meus Dados</span>
+                </button>
+                <button class="menu-item">
+                    <i class="fas fa-users icon-blue"></i>
+                    <span>Meus Dependentes</span>
+                </button>
+                <button class="menu-item">
+                    <i class="fas fa-file-invoice-dollar icon-cyan"></i>
+                    <span>Meus Débitos</span>
+                </button>
+                <button class="menu-item">
+                    <i class="fas fa-receipt icon-blue"></i>
+                    <span>Meus Pagamentos</span>
+                </button>
+                <button class="menu-item">
+                    <i class="fas fa-barcode icon-blue"></i>
+                    <span>2ª Via de Boletos</span>
+                </button>
+                <button class="menu-item">
+                    <i class="fas fa-volleyball-ball icon-green"></i>
+                    <span>Quadras</span>
+                </button>
+                <button class="menu-item">
+                    <i class="fas fa-list-ul icon-green"></i>
+                    <span>Agendamento Aulas</span>
+                </button>
+                <button class="menu-item">
+                    <i class="fas fa-utensils icon-orange"></i>
+                    <span>Churrasqueiras</span>
+                </button>
+                <button class="menu-item">
+                    <i class="fas fa-cog icon-green"></i>
+                    <span>Configurações</span>
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <div id="screen-card" class="screen hidden">
+        <div class="card-container">
+            <div class="card-header">
+                <i class="fas fa-times close-btn" onclick="showScreen('screen-dashboard')"></i>
+            </div>
+            <div class="card-content">
+                <img src="carteira.png" class="full-card-img">
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Registra o Service Worker para permitir uso offline
+        // Função para trocar de tela
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+            document.getElementById(screenId).classList.remove('hidden');
+        }
+
+        // Service Worker
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./service-worker.js')
-                .then(reg => console.log('App pronto para uso offline!'))
-                .catch(err => console.log('Erro ao registrar: ', err));
-            });
+            navigator.serviceWorker.register('./service-worker.js');
         }
     </script>
 </body>

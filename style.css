@@ -1,0 +1,125 @@
+:root {
+    --srb-green: #004d31;
+    --bg-light: #f4f4f4;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-light);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.hidden { display: none !important; }
+
+/* Header */
+.main-header {
+    background-color: var(--srb-green);
+    color: white;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.profile-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+.status-alert {
+    background: white;
+    color: #c00;
+    padding: 2px 8px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-top: 2px;
+}
+
+/* Carrossel */
+.announcement-slider {
+    width: 100%;
+    background: #fff;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.announcement-slider img {
+    width: 100%;
+}
+
+.slider-dots { margin-top: 5px; }
+.dot { height: 8px; width: 8px; background: #bbb; border-radius: 50%; display: inline-block; margin: 0 2px; }
+.dot.active { background: var(--srb-green); }
+
+/* Grid */
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #ddd; /* Cria as linhas divisórias */
+    border-top: 1px solid #ddd;
+}
+
+.menu-item {
+    background: white;
+    border: none;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #444;
+}
+
+.menu-item i {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+/* Cores dos Ícones baseadas no vídeo */
+.icon-red { color: #e74c3c; }
+.icon-blue { color: #3498db; }
+.icon-cyan { color: #1abc9c; }
+.icon-green { color: #27ae60; }
+.icon-orange { color: #f39c12; }
+
+/* Tela da Carteira */
+#screen-card {
+    background: rgba(0,0,0,0.95);
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 100;
+}
+
+.card-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    padding: 20px;
+    text-align: right;
+}
+
+.close-btn {
+    color: #3498db;
+    font-size: 30px;
+}
+
+.card-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-card-img {
+    width: 95%;
+    max-width: 500px;
+    border-radius: 10px;
+}
