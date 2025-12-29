@@ -32,8 +32,19 @@
         </div>
 
         <main>
-            <div style="width:100%; border-bottom: 4px solid #004d31;">
-                <img src="comunicado.png" style="width:100%; display:block;">
+            <div class="announcement-slider">
+                <i class="fas fa-chevron-left slider-arrow left"></i>
+                
+                <img src="banner.jpg" alt="Aviso Festas">
+                
+                <i class="fas fa-chevron-right slider-arrow right"></i>
+
+                <div class="slider-dots-overlay">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
             </div>
 
             <div class="menu-grid">
@@ -43,42 +54,36 @@
                 <button class="menu-item">
                     <i class="fas fa-user c-red"></i><span>Meus Dados</span>
                 </button>
-                
                 <button class="menu-item">
                     <i class="fas fa-users c-blue"></i><span>Meus Dependentes</span>
                 </button>
                 <button class="menu-item">
                     <i class="fas fa-file-invoice-dollar c-cyan"></i><span>Meus Débitos</span>
                 </button>
-                
                 <button class="menu-item">
                     <i class="fas fa-receipt c-blue"></i><span>Meus Pagamentos</span>
                 </button>
                 <button class="menu-item">
                     <i class="fas fa-barcode c-dark-blue"></i><span>2ª Via de Boletos</span>
                 </button>
-                
                 <button class="menu-item">
                     <i class="fas fa-volleyball-ball c-green"></i><span>Quadras</span>
                 </button>
                 <button class="menu-item">
                     <i class="fas fa-list-ul c-black"></i><span>Agendamento Aulas</span>
                 </button>
-                
                 <button class="menu-item">
                     <i class="fas fa-utensils c-orange"></i><span>Churrasqueiras</span>
                 </button>
                 <button class="menu-item">
                     <i class="fas fa-cog c-green"></i><span>Configurações</span>
                 </button>
-                
                 <button class="menu-item">
                     <i class="fas fa-bullhorn c-purple"></i><span>Ouvidoria</span>
                 </button>
                 <button class="menu-item">
                     <i class="fas fa-phone-alt c-red"></i><span>Fale Conosco</span>
                 </button>
-                
                 <button class="menu-item">
                     <i class="fas fa-check-double c-blue"></i><span>Confirmação de Presença</span>
                 </button>
@@ -91,10 +96,10 @@
 
     <div id="screen-card" class="screen hidden">
         <div class="card-view">
-            <div class="card-close-bar">
-                <i class="fas fa-times" onclick="showScreen('screen-dashboard')"></i>
+            <div class="card-container-relative">
+                <img src="carteira.png" class="card-img">
+                <i class="fas fa-times close-icon-overlay" onclick="showScreen('screen-dashboard')"></i>
             </div>
-            <img src="carteira.png" class="card-img">
         </div>
     </div>
 
@@ -102,6 +107,12 @@
         function showScreen(id) {
             document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
+        }
+        // Registro do Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js');
+            });
         }
     </script>
 </body>

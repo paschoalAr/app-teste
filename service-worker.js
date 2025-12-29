@@ -1,12 +1,12 @@
-const CACHE_NAME = 'srb-v4';
+const CACHE_NAME = 'srb-v6';
 const ASSETS = [
   './',
   './index.html',
   './style.css',
-  './carteira.png',
-  './logo.png',
-  './comunicado.png',
-  './perfil.jpg',
+  './carteira.png', // Carteira
+  './banner.jpg',     // Novo Banner
+  './logo.png',       // Ícone
+  './perfil.jpg',     // Foto perfil
   './manifest.json'
 ];
 

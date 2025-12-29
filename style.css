@@ -1,85 +1,110 @@
 :root {
     --srb-green: #004d31;
-    --grid-gap-color: #d1d1d1; /* Cinza um pouco mais escuro para marcar bem a separação */
+    --grid-gap-color: #d1d1d1;
 }
 
 body, html { margin: 0; font-family: sans-serif; background: #fff; }
 .hidden { display: none !important; }
 
-/* Cabeçalho */
+/* HEADER e STATUS */
 .main-header {
     background-color: var(--srb-green);
     color: white;
     padding: 10px 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; justify-content: space-between; align-items: center;
 }
-
 .header-left { display: flex; align-items: center; gap: 10px; }
 .header-titles { display: flex; flex-direction: column; }
 .title-main { font-weight: bold; font-size: 1rem; }
 .title-sub { font-size: 0.75rem; opacity: 0.9; }
 .profile-img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; object-fit: cover; }
 
-/* Status */
 .financial-status {
-    background: #fff;
-    padding: 8px 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    font-size: 0.75rem;
-    color: #555;
+    background: #fff; padding: 8px 15px; display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid #ddd; font-size: 0.75rem; color: #555;
 }
 .status-text { background: #d9534f; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
 
-/* A GRADE DE QUADRADINHOS */
+/* BANNER CARROSSEL (NOVO ESTILO) */
+.announcement-slider {
+    width: 100%;
+    position: relative; /* Permite que setas e dots fiquem em cima */
+}
+.announcement-slider img {
+    width: 100%;
+    display: block;
+}
+
+/* Setas Laterais (Falsas para imitar o vídeo) */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 24px;
+    padding: 10px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    z-index: 2;
+}
+.slider-arrow.left { left: 5px; }
+.slider-arrow.right { right: 5px; }
+
+/* Bolinhas (Dots) Sobrepostas */
+.slider-dots-overlay {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+.dot {
+    height: 8px; width: 8px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 4px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+.dot.active {
+    background: #fff;
+    width: 10px; height: 10px; /* Leve destaque na ativa */
+}
+
+/* GRADE DE MENU */
 .menu-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Duas colunas */
-    background-color: var(--grid-gap-color); /* A cor das linhas de separação */
-    gap: 1px; /* Espessura da linha */
+    display: grid; grid-template-columns: 1fr 1fr;
+    background-color: var(--grid-gap-color); gap: 1px;
     border-top: 1px solid var(--grid-gap-color);
 }
-
 .menu-item {
-    background: white;
-    border: none;
-    /* Isso garante que sejam quadrados perfeitos: */
-    aspect-ratio: 1 / 1; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 0.8rem;
-    color: #333;
-    padding: 10px;
+    background: white; border: none; aspect-ratio: 1 / 1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; font-size: 0.8rem; color: #333; padding: 10px;
 }
+.menu-item i { font-size: 28px; margin-bottom: 12px; }
 
-.menu-item i {
-    font-size: 28px; /* Ícones grandes */
-    margin-bottom: 12px;
-}
+/* CORES ÍCONES */
+.c-red { color: #e74c3c; }
+.c-blue { color: #3498db; }
+.c-cyan { color: #1abc9c; }
+.c-dark-blue { color: #34495e; }
+.c-green { color: #2ecc71; }
+.c-orange { color: #f39c12; }
+.c-purple { color: #9b59b6; }
+.c-black { color: #333; }
+.c-exit-blue { color: #4a90e2; }
 
-/* Cores Exatas da Imagem */
-.c-red { color: #e74c3c; }       /* Carteira, Meus Dados, Fale Conosco */
-.c-blue { color: #3498db; }      /* Dependentes, Pagamentos, Sair */
-.c-cyan { color: #1abc9c; }      /* Débitos */
-.c-dark-blue { color: #34495e; } /* 2a Via */
-.c-green { color: #2ecc71; }     /* Quadras, Configurações */
-.c-orange { color: #f39c12; }    /* Churrasqueiras */
-.c-purple { color: #9b59b6; }    /* Ouvidoria */
-.c-black { color: #333; }        /* Agendamento */
-.c-exit-blue { color: #4a90e2; } /* Botão Sair específico */
-
-/* Tela da Carteira (Overlay) */
+/* TELA CARTEIRA */
 .card-view {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: #000; z-index: 9999;
-    display: flex; flex-direction: column;
+    display: flex; justify-content: center; align-items: flex-start;
+    padding-top: 60px;
 }
-.card-close-bar { padding: 15px; text-align: right; color: #3498db; font-size: 32px; }
-.card-img { width: 100%; max-width: 600px; margin: auto; }
+.card-container-relative { position: relative; width: 95%; max-width: 600px; }
+.card-img { width: 100%; display: block; border-radius: 12px; box-shadow: 0 4px 15px rgba(255,255,255,0.1); }
+.close-icon-overlay {
+    position: absolute; top: 10px; right: 15px;
+    color: #3498db; font-size: 32px; font-weight: bold; cursor: pointer;
+    filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.5));
+}
