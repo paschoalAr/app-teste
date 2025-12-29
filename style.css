@@ -1,18 +1,12 @@
 :root {
     --srb-green: #004d31;
-    --bg-light: #f4f4f4;
+    --grid-gap-color: #d1d1d1; /* Cinza um pouco mais escuro para marcar bem a separação */
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: var(--bg-light);
-    margin: 0;
-    overflow-x: hidden;
-}
-
+body, html { margin: 0; font-family: sans-serif; background: #fff; }
 .hidden { display: none !important; }
 
-/* Header */
+/* Cabeçalho */
 .main-header {
     background-color: var(--srb-green);
     color: white;
@@ -20,106 +14,72 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.8rem;
 }
 
-.profile-img {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    border: 1px solid white;
-}
+.header-left { display: flex; align-items: center; gap: 10px; }
+.header-titles { display: flex; flex-direction: column; }
+.title-main { font-weight: bold; font-size: 1rem; }
+.title-sub { font-size: 0.75rem; opacity: 0.9; }
+.profile-img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; object-fit: cover; }
 
-.status-alert {
-    background: white;
-    color: #c00;
-    padding: 2px 8px;
-    border-radius: 15px;
-    display: inline-block;
-    margin-top: 2px;
-}
-
-/* Carrossel */
-.announcement-slider {
-    width: 100%;
+/* Status */
+.financial-status {
     background: #fff;
-    padding-bottom: 10px;
-    text-align: center;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.75rem;
+    color: #555;
 }
+.status-text { background: #d9534f; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
 
-.announcement-slider img {
-    width: 100%;
-}
-
-.slider-dots { margin-top: 5px; }
-.dot { height: 8px; width: 8px; background: #bbb; border-radius: 50%; display: inline-block; margin: 0 2px; }
-.dot.active { background: var(--srb-green); }
-
-/* Grid */
+/* A GRADE DE QUADRADINHOS */
 .menu-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: #ddd; /* Cria as linhas divisórias */
-    border-top: 1px solid #ddd;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    background-color: var(--grid-gap-color); /* A cor das linhas de separação */
+    gap: 1px; /* Espessura da linha */
+    border-top: 1px solid var(--grid-gap-color);
 }
 
 .menu-item {
     background: white;
     border: none;
-    padding: 20px 10px;
+    /* Isso garante que sejam quadrados perfeitos: */
+    aspect-ratio: 1 / 1; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 0.85rem;
-    color: #444;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #333;
+    padding: 10px;
 }
 
 .menu-item i {
-    font-size: 24px;
-    margin-bottom: 8px;
+    font-size: 28px; /* Ícones grandes */
+    margin-bottom: 12px;
 }
 
-/* Cores dos Ícones baseadas no vídeo */
-.icon-red { color: #e74c3c; }
-.icon-blue { color: #3498db; }
-.icon-cyan { color: #1abc9c; }
-.icon-green { color: #27ae60; }
-.icon-orange { color: #f39c12; }
+/* Cores Exatas da Imagem */
+.c-red { color: #e74c3c; }       /* Carteira, Meus Dados, Fale Conosco */
+.c-blue { color: #3498db; }      /* Dependentes, Pagamentos, Sair */
+.c-cyan { color: #1abc9c; }      /* Débitos */
+.c-dark-blue { color: #34495e; } /* 2a Via */
+.c-green { color: #2ecc71; }     /* Quadras, Configurações */
+.c-orange { color: #f39c12; }    /* Churrasqueiras */
+.c-purple { color: #9b59b6; }    /* Ouvidoria */
+.c-black { color: #333; }        /* Agendamento */
+.c-exit-blue { color: #4a90e2; } /* Botão Sair específico */
 
-/* Tela da Carteira */
-#screen-card {
-    background: rgba(0,0,0,0.95);
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 100;
+/* Tela da Carteira (Overlay) */
+.card-view {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #000; z-index: 9999;
+    display: flex; flex-direction: column;
 }
-
-.card-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-header {
-    padding: 20px;
-    text-align: right;
-}
-
-.close-btn {
-    color: #3498db;
-    font-size: 30px;
-}
-
-.card-content {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.full-card-img {
-    width: 95%;
-    max-width: 500px;
-    border-radius: 10px;
-}
+.card-close-bar { padding: 15px; text-align: right; color: #3498db; font-size: 32px; }
+.card-img { width: 100%; max-width: 600px; margin: auto; }

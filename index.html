@@ -13,90 +13,95 @@
 
     <div id="screen-dashboard" class="screen">
         <header class="main-header">
-            <i class="fas fa-bars"></i>
-            <div class="header-status">
-                <span>Situação Financeira do Titular:</span>
-                <strong class="status-alert">Com Pendência(s) <i class="fas fa-sync-alt"></i></strong>
+            <div class="header-left">
+                <i class="fas fa-bars"></i>
+                <div class="header-titles">
+                    <span class="title-main">Sociedade Rio Branco</span>
+                    <span class="title-sub">Cachoeira do Sul - RS</span>
+                </div>
             </div>
-            <img src="perfil.jpg" class="profile-img" alt="Perfil">
+            <img src="perfil.jpg" class="profile-img">
         </header>
 
+        <div class="financial-status">
+            <span>Situação Financeira do Titular:</span>
+            <div style="display:flex; align-items:center; gap:5px;">
+                <span class="status-text">Com Pendência(s)</span>
+                <i class="fas fa-sync-alt"></i>
+            </div>
+        </div>
+
         <main>
-            <div class="announcement-slider">
-                <img src="comunicado.png" alt="Comunicado SRB">
-                <div class="slider-dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
+            <div style="width:100%; border-bottom: 4px solid #004d31;">
+                <img src="comunicado.png" style="width:100%; display:block;">
             </div>
 
             <div class="menu-grid">
                 <button class="menu-item" onclick="showScreen('screen-card')">
-                    <i class="fas fa-address-card icon-red"></i>
-                    <span>Minha Carteira</span>
+                    <i class="fas fa-address-card c-red"></i><span>Minha Carteira</span>
                 </button>
                 <button class="menu-item">
-                    <i class="fas fa-user icon-red"></i>
-                    <span>Meus Dados</span>
+                    <i class="fas fa-user c-red"></i><span>Meus Dados</span>
+                </button>
+                
+                <button class="menu-item">
+                    <i class="fas fa-users c-blue"></i><span>Meus Dependentes</span>
                 </button>
                 <button class="menu-item">
-                    <i class="fas fa-users icon-blue"></i>
-                    <span>Meus Dependentes</span>
+                    <i class="fas fa-file-invoice-dollar c-cyan"></i><span>Meus Débitos</span>
+                </button>
+                
+                <button class="menu-item">
+                    <i class="fas fa-receipt c-blue"></i><span>Meus Pagamentos</span>
                 </button>
                 <button class="menu-item">
-                    <i class="fas fa-file-invoice-dollar icon-cyan"></i>
-                    <span>Meus Débitos</span>
+                    <i class="fas fa-barcode c-dark-blue"></i><span>2ª Via de Boletos</span>
+                </button>
+                
+                <button class="menu-item">
+                    <i class="fas fa-volleyball-ball c-green"></i><span>Quadras</span>
                 </button>
                 <button class="menu-item">
-                    <i class="fas fa-receipt icon-blue"></i>
-                    <span>Meus Pagamentos</span>
+                    <i class="fas fa-list-ul c-black"></i><span>Agendamento Aulas</span>
+                </button>
+                
+                <button class="menu-item">
+                    <i class="fas fa-utensils c-orange"></i><span>Churrasqueiras</span>
                 </button>
                 <button class="menu-item">
-                    <i class="fas fa-barcode icon-blue"></i>
-                    <span>2ª Via de Boletos</span>
+                    <i class="fas fa-cog c-green"></i><span>Configurações</span>
+                </button>
+                
+                <button class="menu-item">
+                    <i class="fas fa-bullhorn c-purple"></i><span>Ouvidoria</span>
                 </button>
                 <button class="menu-item">
-                    <i class="fas fa-volleyball-ball icon-green"></i>
-                    <span>Quadras</span>
+                    <i class="fas fa-phone-alt c-red"></i><span>Fale Conosco</span>
+                </button>
+                
+                <button class="menu-item">
+                    <i class="fas fa-check-double c-blue"></i><span>Confirmação de Presença</span>
                 </button>
                 <button class="menu-item">
-                    <i class="fas fa-list-ul icon-green"></i>
-                    <span>Agendamento Aulas</span>
-                </button>
-                <button class="menu-item">
-                    <i class="fas fa-utensils icon-orange"></i>
-                    <span>Churrasqueiras</span>
-                </button>
-                <button class="menu-item">
-                    <i class="fas fa-cog icon-green"></i>
-                    <span>Configurações</span>
+                    <i class="fas fa-sign-out-alt c-exit-blue"></i><span>Sair</span>
                 </button>
             </div>
         </main>
     </div>
 
     <div id="screen-card" class="screen hidden">
-        <div class="card-container">
-            <div class="card-header">
-                <i class="fas fa-times close-btn" onclick="showScreen('screen-dashboard')"></i>
+        <div class="card-view">
+            <div class="card-close-bar">
+                <i class="fas fa-times" onclick="showScreen('screen-dashboard')"></i>
             </div>
-            <div class="card-content">
-                <img src="carteira.png" class="full-card-img">
-            </div>
+            <img src="carteira.png" class="card-img">
         </div>
     </div>
 
     <script>
-        // Função para trocar de tela
-        function showScreen(screenId) {
+        function showScreen(id) {
             document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
-            document.getElementById(screenId).classList.remove('hidden');
-        }
-
-        // Service Worker
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./service-worker.js');
+            document.getElementById(id).classList.remove('hidden');
         }
     </script>
 </body>
